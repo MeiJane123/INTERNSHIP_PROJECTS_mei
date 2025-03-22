@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-list"></i> Todo List</h2>
+            </div>
+            <ul class="menu">
+                <li class="active" data-category="All"><i class="fas fa-tasks"></i> All Tasks</li>
+                <li data-category="Personal"><i class="fas fa-user"></i> Personal</li>
+                <li data-category="Work"><i class="fas fa-briefcase"></i> Work</li>
+                <li data-category="Shopping"><i class="fas fa-shopping-cart"></i> Shopping</li>
+                <li data-category="Health"><i class="fas fa-heartbeat"></i> Health</li>
+                <li data-category="Books to Read"><i class="fas fa-book"></i> Books to Read</li>
+                <li data-category="Others"><i class="fas fa-folder"></i> Others</li>
+            </ul>
+            <button class="save-task-btn" id="openModalBtn"><i class="fa-solid fa-plus"></i> Add New Task</button>   
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <h1>Task Overview</h1>
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search tasks...">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </header>            
+
+            <section class="task-summary">
+                <div class="task-box total">
+                    <i class="fa-solid fa-tasks"></i>
+                    <h3>Total Tasks</h3>
+                    <span id="totalTasks">0</span>
+                </div>
+                <div class="task-box completed">
+                    <i class="fa-solid fa-check-circle"></i>
+                    <h3>Completed Tasks</h3>
+                    <span id="completedTasks">0</span>
+                    <div class="progress-bar">
+                        <div class="progress" id="progressCompleted"></div>
+                    </div>
+                </div>
+                <div class="task-box pending">
+                    <i class="fa-solid fa-clock"></i>
+                    <h3>Pending Tasks</h3>
+                    <span id="pendingTasks">0</span>
+                    <div class="progress-bar">
+                        <div class="progress" id="progressPending"></div>
+                    </div>
+                </div>
+            </section>
+            
+            <div id="task-container">
+                <h2>Tasks Board </h2>
+            
+                <div class="task-status-container">
+                    <div class="status-column" id="todo">
+                        <h3>To Do</h3>
+                        <ul id="todo-list"></ul>
+                    </div>
+                    <div id="taskList"></div>
+            
+                    <div class="status-column" id="in-progress">
+                        <h3>In Progress</h3>
+                        <ul id="in-progress-list"></ul>
+                    </div>
+                    <div id="taskList"></div>
+            
+                    <div class="status-column" id="done">
+                        <h3>Done</h3>
+                        <ul id="done-list"></ul>
+                    </div>
+                    <div id="taskList"></div>
+                </div>
+            </div>        
+            </section>
+
+            <div id="taskModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn" id="closeModalBtn">&times;</span>
+                    <h2>Add New Task</h2>
+
+                    <label for="task-name">Task Name:</label>
+                    <input type="text" id="task-name" placeholder="Enter task name">
+
+                    <label for="task-date">Date:</label>
+                    <input type="date" id="task-date">
+
+                    <label for="start-time">Start Time:</label>
+                    <input type="time" id="start-time">
+
+                    <label for="end-time">End Time:</label>
+                    <input type="time" id="end-time">
+
+                    <label for="priority">Priority:</label>
+                    <select id="priority">
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+
+                    <label for="category">Category:</label>
+                    <select id="category">
+                        <option value="Work">Work</option>
+                        <option value="Personal">Personal</option>
+                        <option value="Shopping">Shopping</option>
+                        <option value="Health">Health</option>
+                        <option value="Books to Read">Books to Read</option>
+                        <option value="Others">Others</option>
+                    </select>
+
+                    <label for="description">Description:</label>
+                    <textarea id="description" rows="3" placeholder="Enter details"></textarea>
+
+                    <button class="save-task-btn" onclick="saveTask()"><i class="fa-solid fa-download"></i> Save Task</button>
+
+                </div>
+            </div>   
+        </main>
+    </div>
+</body>
+</html>
